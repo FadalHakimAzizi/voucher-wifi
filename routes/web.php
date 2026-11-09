@@ -103,10 +103,10 @@ Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
 
 /*
 |--------------------------------------------------------------------------
-| Admin Backend (Authenticated)
+| Admin Backend (Authenticated + Role = admin)
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth')
+Route::middleware(['auth', 'userakses:admin'])
      ->prefix('admin')
      ->name('admin.')
      ->group(function () {

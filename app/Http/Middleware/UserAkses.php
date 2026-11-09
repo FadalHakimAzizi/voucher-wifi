@@ -29,8 +29,9 @@ class UserAkses
             // opsi A: abort 403
             // abort(403, 'Unauthorized');
 
-            // opsi B: redirect ke dashboard yang sesuai
-            $redirectRoute = $role === 'admin'
+            // opsi B: redirect ke dashboard milik role pengguna itu sendiri
+            // (bukan dashboard role yang diminta, supaya tidak terjadi redirect berulang)
+            $redirectRoute = Auth::user()->role === 'admin'
                 ? 'admin.dashboard'
                 : 'user.dashboard';
 
